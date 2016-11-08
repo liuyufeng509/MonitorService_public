@@ -43,13 +43,22 @@ done
 echo "监控服务安装程序完毕，请在bin目录下，运行./MonitorService命令启动程序"
 
 echo "开始安装流媒体服务程序"
-
-echo "Make GLIB PATH"
-cp ./bin/libstdc++.so.6.0.17 /usr/lib64
-mv /usr/lib64/libstdc++.so.6 /usr/lib64/libstdc++.so.6-bak
-ln /usr/lib64/libstdc++.so.6.0.17 /usr/lib64/libstdc++.so.6
-echo "End!"
-
+if [ -d /usr/local/ ];then
+   echo "/usr/local/文件夹存在!"
+else
+   echo "/usr/local/文件夹不存在!"
+   mkdir -p /usr/local
+fi
+    cp ./bin/libstdc++.so.6.0.17 /usr/lib64
+    mv /usr/lib64/libstdc++.so.6 /usr/lib64/libstdc++.so.6-bak
+    ln /usr/lib64/libstdc++.so.6.0.17 /usr/lib64/libstdc++.so.6
+    mkdir /usr/local/
+    cp ./bin/Media.ini /usr/local/
+    cp ./bin/avihead /usr/local/
+    cp ./bin/common.db /usr/local/
+    cp ./bin/log4cplus.cfg /usr/local/
+    cp ./bin/server.pem /usr/local/
+    cp ./bin/Common.ini /usr/local/
 echo "流媒体服务安装结束"
 
 
